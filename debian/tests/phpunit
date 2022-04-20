@@ -1,0 +1,12 @@
+#!/bin/sh
+set +x
+
+mkdir -p vendor
+phpab \
+	-o vendor/autoload.php \
+	-t debian/autoload.php.test.tpl \
+	tests stub
+
+phpunit -v \
+	--include-path /usr/share/php/League/Flysystem \
+	--exclude-group integration

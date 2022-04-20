@@ -1,0 +1,3 @@
+Tests: phpunit
+Restrictions: allow-stderr, rw-build-tree
+Depends: @, phpunit, phpab, php-league-mime-type-detection

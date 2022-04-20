@@ -1,0 +1,37 @@
+From: Robin Gustafsson <robin@rgson.se>
+Date: Mon, 18 Jan 2021 23:00:44 +0100
+Subject: Fix time-related tests failing in 2021
+
+Two tests related to Unix file listings are failing now in 2021 due to
+the expectation that a timestamp without an explicit year is from 2020.
+
+The expectation is adjusted to always use the current year. This
+solution was already used for a different file in the same dataset.
+
+Forwarded: https://github.com/thephpleague/flysystem/pull/1259
+---
+ tests/FtpTests.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/FtpTests.php b/tests/FtpTests.php
+index 717b0f5..270061a 100755
+--- a/tests/FtpTests.php
++++ b/tests/FtpTests.php
+@@ -662,7 +662,7 @@ class FtpTests extends TestCase
+                     [
+                         'type' => 'dir',
+                         'path' => 'folder',
+-                        'timestamp' => 1606226340,
++                        'timestamp' => DateTime::createFromFormat('M d H:i', 'Nov 24 13:59')->getTimestamp(),
+                     ],
+                     [
+                         'type' => 'file',
+@@ -693,7 +693,7 @@ class FtpTests extends TestCase
+                     [
+                         'type' => 'dir',
+                         'path' => 'folder',
+-                        'timestamp' => 1606226340,
++                        'timestamp' => DateTime::createFromFormat('M d H:i', 'Nov 24 13:59')->getTimestamp(),
+                     ],
+                     [
+                         'type' => 'file',

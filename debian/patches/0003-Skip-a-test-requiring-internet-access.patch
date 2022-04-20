@@ -1,0 +1,21 @@
+From: Robin Gustafsson <robin@rgson.se>
+Date: Thu, 20 Feb 2020 13:44:46 +0100
+Subject: Skip a test requiring internet access
+
+Forwarded: not-needed
+---
+ tests/UtilTests.php | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/UtilTests.php b/tests/UtilTests.php
+index 9ee36a1..dbd2187 100644
+--- a/tests/UtilTests.php
++++ b/tests/UtilTests.php
+@@ -170,6 +170,7 @@ class UtilTests extends TestCase
+ 
+     public function testStreamSizeForUrl()
+     {
++        $this->markTestSkipped('Internet access is disallowed.');
+         $stream = \fopen('https://flysystem.thephpleague.com/img/flysystem.svg', 'r');
+         $this->assertNull(Util::getStreamSize($stream));
+         fclose($stream);

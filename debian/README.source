@@ -1,0 +1,14 @@
+php-league-flysystem for Debian
+-------------------------------
+
+This package is built with gbp and uscan.
+
+We're using upstream's git tags rather than their tarballs, because they exclude
+test-related files in their releases.
+
+Steps to upgrade to a new upstream version:
+
+    gbp import-orig --uscan
+
+
+ -- Robin Gustafsson <robin@rgson.se>  Tue, 19 Jan 2021 22:32:12 +0100
